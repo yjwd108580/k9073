@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hkk.piaoprovider.dao.SubjectDao">
+    <insert id="addSubject" parameterType="com.hkk.bean.Subject">
+        insert into subject values(zid,#{title},#{totalvotes},#{viewtimes},#{createdate})
+    </insert>
+
+    <select id="queryAll" resultType="com.hkk.bean.Subject">
+    select * from subject
+    </select>
+
+    <select id="queryByzid" resultType="com.hkk.bean.Subject">
+    select * from subject where zid=#{zid}
+    </select>
+
+
+    <update id="updatetotalvotes" parameterType="int">
+        update subject set totalvotes=totalvotes+1 where zid=#{zid}
+    </update>
+
+    <update id="updateviewtimes" parameterType="int">
+        update subject set viewtimes=viewtimes+1 where zid=#{zid}
+    </update>
+</mapper>
